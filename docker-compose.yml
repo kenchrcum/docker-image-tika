@@ -1,0 +1,40 @@
+services:
+  tika:
+    build:
+      context: .
+      dockerfile: minimal/Dockerfile
+      args:
+        TIKA_VERSION: "3.2.3"
+    ports:
+      - "127.0.0.1:9998:9998"
+    user: "35002:35002"
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "/healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  tika-full:
+    build:
+      context: .
+      dockerfile: full/Dockerfile
+      args:
+        TIKA_VERSION: "3.2.3"
+    ports:
+      - "127.0.0.1:9999:9998"
+    user: "35002:35002"
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "/healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+    profiles:
+      - full
