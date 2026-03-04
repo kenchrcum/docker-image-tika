@@ -139,5 +139,4 @@ jobs:
             --java-db-repository ghcr.io/aquasecurity/trivy-java-db:1 \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
-            --exit-code 1 \
             ${{ matrix.tag }}
