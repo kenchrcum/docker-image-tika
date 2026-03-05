@@ -17,6 +17,7 @@ jobs:
       contents: read
       id-token: write      # Cosign keyless signing via GitHub OIDC
       packages: write      # push to ghcr.io
+      security-events: write # upload Trivy SARIF to GitHub Security tab
 
     strategy:
       fail-fast: false
@@ -56,7 +57,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ steps.version.outputs.version }}${{ matrix.suffix }}
-            type=raw,value=latest${{ matrix.suffix }},enable={{is_default_branch}}
+            type=raw,value=latest${{ matrix.suffix }}
 
       - name: Build and push ${{ matrix.variant }} image
         id: build-push
