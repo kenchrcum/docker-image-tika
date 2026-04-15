@@ -3,7 +3,7 @@
 # ── Stage 1: Download & Verify ──────────────────────────────────────────────
 FROM alpine:3.23.3 AS downloader
 
-ARG TIKA_VERSION=3.4.0
+ARG TIKA_VERSION=3.3.0
 
 # hadolint ignore=DL3018,DL4006
 RUN apk add --no-cache wget gnupg ca-certificates \
@@ -19,7 +19,7 @@ RUN apk add --no-cache wget gnupg ca-certificates \
 # ── Stage 2: Runtime ─────────────────────────────────────────────────────────
 FROM eclipse-temurin:21.0.10_7-jre-alpine-3.23 AS runtime
 
-ARG TIKA_VERSION=3.4.0
+ARG TIKA_VERSION=3.3.0
 ENV TIKA_VERSION=${TIKA_VERSION}
 
 # Non-root user matching Helm chart expectations (UID/GID 35002)

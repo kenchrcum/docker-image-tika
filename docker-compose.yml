@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: minimal/Dockerfile
       args:
-        TIKA_VERSION: "3.4.0"
+        TIKA_VERSION: "3.3.0"
     ports:
       - "127.0.0.1:9998:9998"
     user: "35002:35002"
@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: full/Dockerfile
       args:
-        TIKA_VERSION: "3.4.0"
+        TIKA_VERSION: "3.3.0"
     ports:
       - "127.0.0.1:9999:9998"
     user: "35002:35002"
