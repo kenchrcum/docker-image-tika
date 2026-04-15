@@ -31,10 +31,10 @@ A modern, hardened Docker image for [Apache Tika Server](https://tika.apache.org
 
 ```bash
 # Minimal
-docker run -p 9998:9998 ghcr.io/kenchrcum/tika:3.2.4
+docker run -p 9998:9998 ghcr.io/kenchrcum/tika:3.4.0
 
 # Full (OCR + GDAL)
-docker run -p 9998:9998 ghcr.io/kenchrcum/tika:3.2.4-full
+docker run -p 9998:9998 ghcr.io/kenchrcum/tika:3.4.0-full
 
 # Verify it's running
 curl http://localhost:9998/version
@@ -51,7 +51,7 @@ curl -T document.pdf http://localhost:9998/tika
 ```bash
 docker run -p 9998:9998 \
   -v /path/to/tika-config.xml:/tika-config/tika-config.xml:ro \
-  ghcr.io/kenchrcum/tika:3.2.4 \
+  ghcr.io/kenchrcum/tika:3.4.0 \
   -c /tika-config/tika-config.xml
 ```
 
@@ -63,8 +63,8 @@ This image is a drop-in replacement for the [kenchrcum/helm-chart-tika](https://
 # values.yaml
 image:
   repository: ghcr.io/kenchrcum/tika
-  tag: "3.2.4"        # minimal
-  # tag: "3.2.4-full" # full (OCR)
+  tag: "3.4.0"        # minimal
+  # tag: "3.4.0-full" # full (OCR)
 ```
 
 ### Compatibility contract
@@ -85,12 +85,12 @@ image:
 | Environment Variable | Default | Description |
 |---|---|---|
 | `JAVA_OPTS` | _(empty)_ | Extra JVM flags (e.g. `-Xmx2g -XX:+UseG1GC`) |
-| `TIKA_VERSION` | `3.2.4` | Tika version baked into the image |
+| `TIKA_VERSION` | `3.4.0` | Tika version baked into the image |
 
 Additional Tika CLI arguments can be passed as Docker command arguments, e.g.:
 
 ```bash
-docker run kenchrcum/tika:3.2.4 \
+docker run kenchrcum/tika:3.4.0 \
   -c /tika-config/tika-config.xml \
   --cors "*"
 ```
@@ -107,12 +107,12 @@ Every release image is:
 
 ```bash
 # Verify signature
-cosign verify ghcr.io/kenchrcum/tika:3.2.4 \
+cosign verify ghcr.io/kenchrcum/tika:3.4.0 \
   --certificate-identity-regexp="https://github.com/kenchrcum/docker-image-tika/.*" \
   --certificate-oidc-issuer="https://token.actions.githubusercontent.com"
 
 # Download SBOM
-cosign download sbom ghcr.io/kenchrcum/tika:3.2.4
+cosign download sbom ghcr.io/kenchrcum/tika:3.4.0
 ```
 
 ## Local development
@@ -131,7 +131,7 @@ make scan
 make lint
 
 # Override version
-make build TIKA_VERSION=3.2.4
+make build TIKA_VERSION=3.4.0
 ```
 
 Using Docker Compose:
