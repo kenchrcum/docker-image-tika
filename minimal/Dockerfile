@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ── Stage 1: Download & Verify ──────────────────────────────────────────────
-FROM alpine:3.23.3 AS downloader
+FROM alpine:3.23.4 AS downloader
 
 ARG TIKA_VERSION=3.3.0
 
