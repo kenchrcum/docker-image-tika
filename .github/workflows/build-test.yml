@@ -14,12 +14,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Lint minimal/Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.3.0
         with:
           dockerfile: minimal/Dockerfile
 
       - name: Lint full/Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.3.0
         with:
           dockerfile: full/Dockerfile
 
