@@ -17,7 +17,7 @@ RUN apk add --no-cache wget gnupg ca-certificates \
     && gpg --verify /tika-server.jar.asc /tika-server.jar
 
 # ── Stage 2: Runtime ─────────────────────────────────────────────────────────
-FROM eclipse-temurin:21.0.10_7-jre-alpine-3.23 AS runtime
+FROM eclipse-temurin:25.0.3_9-jre-alpine-3.23 AS runtime
 
 ARG TIKA_VERSION=3.3.0
 ENV TIKA_VERSION=${TIKA_VERSION}
